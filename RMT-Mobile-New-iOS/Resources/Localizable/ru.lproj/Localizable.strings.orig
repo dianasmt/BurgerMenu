@@ -1,0 +1,122 @@
+/* 
+  Localizable.strings
+  RMT-Mobile-New-iOS
+
+  Created by Aibek on 12.07.2022.
+  
+*/
+
+"welcome_screen_login_button_title" = "Войти";
+"welcome_screen_registration_button_title" = "Регистрация";
+"onboarding_welcome_screen_continue_button_state_one" = "Продолжить";
+"onboarding_welcome_screen_continue_button_state_two" = "Начать регистрацию";
+"burger_menu_ATMs" = "Банкоматы и отделения";
+"burger_menu_exchange_rates" = "Курсы валют";
+
+"burger_menu_number_information" = "Бесплатные звонки по Польше";
+"burger_menu_international_number_information" = "Телефон для международных звонков";
+"burger_menu_submit_bug_report" = "Отправить отчет об ошибке";
+
+"burger_menu_language" = "Язык";
+"burger_menu_indicator_language" = "Русский";
+"burger_menu_title_menu" = "Меню";
+
+"burger_menu_mode" = "Тёмная тема";
+
+"explanation_allow_access_to_your_location" = "Разрешите доступ к вашей геопозиции";
+"explanation_access_to_your_location" = "Доступ к вашему местоположению позволит приложению Andersen-Bank находить отделения, банкоматы и терминалы рядом с вами";
+
+"currency_name" = "Валюта";
+"currency_exchange_sell" = "Продажа";
+"currency_exchange_buy" = "Покупка";
+"currency_exchange_dollar_full" = "Доллар США";
+"currency_exchange_exchange_rates" = "Курсы валют";
+"currency_exchange_euro_full" = "Евро";
+"currency_exchange_euro/dollar" = "Евро/Доллар США";
+"currency_exchange_eur/usd" = "EUR/USD";
+"currency_exchange_loading_error" = "Ошибка загрузки";
+"change_language_ru" = "Русский";
+"change_language_eng" = "Английский";
+
+"ATMs_title_menu" = "Банкоматы и отделения";
+
+"ATMs_collection_header_requests" = "Популярные запросы";
+"ATMs_collection_header_schedule" = "График работы";
+"ATMs_collection_header_additionaly" = "Дополнительно";
+
+"ATMs_collection_requests_transfer" = "Перевести";
+"ATMs_collection_requests_pay" = "Оплатить";
+"ATMs_collection_requests_withdraw" = "Снять";
+"ATMs_collection_requests_replenish" = "Пополнить";
+"ATMs_collection_requests_exchange" = "Обмен валют";
+"ATMs_collection_requests_without_card" = "Пополнить без карты";
+
+"ATMs_collection_schedule_weekend" = "Выходные";
+"ATMs_collection_schedule_open" = "Открыто сейчас";
+"ATMs_collection_schedule_24" = "Круглосуточно";
+
+"ATMs_collection_additionaly_ramp" = "Пандус";
+"ATMs_collection_additionaly_exotic" = "Обмен экзотической валюты";
+"ATMs_collection_additionaly_consult" = "Консультация";
+"ATMs_collection_additionaly_insurance" = "Страхование";
+
+"ATMs_segmented_controller_map" = "Карта";
+"ATMs_segmented_controller_list" = "Список";
+
+"ATMs_name_department" = "Отделение";
+"ATMs_name_atm" = "Банкомат";
+"ATMs_name_terminal" = "Терминал";
+
+"monday_short" = "Пн";
+"tuesday_short" = "Вт";
+"wednesday_short" = "Ср";
+"thursday_short" = "Чт";
+"friday_short" = "Пт";
+"saturday_short" = "Сб";
+"sunday_short" = "Вс";
+
+"atm_status_open" = "Сейчас открыто";
+"atm_status_closed" = "Сейчас закрыто";
+
+"ATMs_not_found" = "Результатов не найдено";
+
+"error_report_error_report" = "Отчет об ошибке";
+"error_report_describe_the_problem" = "Опишите проблему";
+"error_report_send_button" = "Отправить";
+"error_report_enter_your_email" = "Введите ваш и-мейл";
+"error_report_my_contact_email" = "\n Мой контактный и-мейл: ";
+"error_report_email" = "И-мейл";
+
+<<<<<<< HEAD
+"registration_auth_label" = "Авторизация";
+"registration_phoneNumber_start_number" = "+7";
+"registration_phoneNumber_mask" = "xxx xxx xxxx";
+"registration_phoneNumber_maskCharacter" = "x";
+"registration_phoneNumber_already_exist" = "Пользователь с таким номером телефона уже зарегистрирован в системе. Пожалуйста авторизируйтесь";
+"registration_phoneNumber_invalidNumber" = "Неккоректный номер телефона";
+"registration_privacy_underlined_title" = "Политикой конфиденциальности";
+"registration_privacy_title" = "Нажав кнопку \“Продолжить\”, вы соглашаетесь с Политикой конфиденциальности и даете согласие на сбор, обработку и хранение Ваших персональных данных";
+"registration_phone_title" = "Введите номер телефона";
+=======
+"kilometers_short" = "км";
+"meters_short" = "м";
+
+"ATMs_services_transfer" = "Перевести";
+"ATMs_services_pay" = "Оплатить";
+"ATMs_services_withdraw" = "Снять";
+"ATMs_services_deposit" = "Пополнить";
+"ATMs_services_currency_exchange" = "Обмен валют";
+"ATMs_services_deposit_without_card" = "Пополнить без карты";
+"ATMs_services_ramp" = "Пандус";
+"ATMs_services_exotic_currency_exchange" = "Обмен экзотической валюты";
+"ATMs_services_consultation" = "Консультация";
+"ATMs_services_insurance" = "Страхование";
+"atm_pull_up_more_filters" = "Другие фильтры";
+"atm_popup_details" = "Подробнее";
+
+"popular_services" = "Популярные запросы";
+"additional_services" = "Дополнительно";
+"department_work_schedule" = "График работы";
+
+"placeholder_for_searchbar" = "Начните вводить название улицы";
+>>>>>>> develop

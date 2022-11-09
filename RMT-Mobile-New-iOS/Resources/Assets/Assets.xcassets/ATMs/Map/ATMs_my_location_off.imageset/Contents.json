@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ATMs_my_location_off.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

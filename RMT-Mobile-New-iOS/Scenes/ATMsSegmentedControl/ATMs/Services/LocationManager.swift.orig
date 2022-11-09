@@ -1,0 +1,49 @@
+//
+//  LocationManager.swift
+//  RMT-Mobile-New-iOS
+//
+//  Created by Диана Смахтина on 5.09.22.
+//
+
+import Foundation
+import CoreLocation
+
+protocol LoacationManagerProtocol {
+    func getLocation() -> CLLocationCoordinate2D?
+    func status() -> CLAuthorizationStatus
+    func getDistance(to coordinates: (Double, Double)) -> Int?
+}
+
+class LocationService: NSObject, CLLocationManagerDelegate, LoacationManagerProtocol {
+    private let locationManager: CLLocationManager = CLLocationManager()
+    
+    init(viewController: ATMsViewController) {
+        self.locationManager.delegate = viewController
+    }
+    
+    func getLocation() -> CLLocationCoordinate2D? {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        return locationManager.location?.coordinate
+    }
+    
+    func status() -> CLAuthorizationStatus {
+        if #available(iOS 14.0, *) {
+            return locationManager.authorizationStatus
+        } else {
+            return CLLocationManager.authorizationStatus()
+        }
+    }
+    
+    func getDistance(to coordinates: (Double, Double)) -> Int? {
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        guard let currentLocation = locationManager.location?.coordinate else {
+            return nil
+        }
+        let startLocation = CLLocation.init(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+        let endLocation : CLLocation = CLLocation.init(latitude: coordinates.0, longitude: coordinates.1)
+        let distance = startLocation.distance(from: endLocation)
+        return Int(distance)
+    }
+}

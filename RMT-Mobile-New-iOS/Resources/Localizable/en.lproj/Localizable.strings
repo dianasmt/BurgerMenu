@@ -1,0 +1,114 @@
+/* 
+  Localizable.strings
+  RMT-Mobile-New-iOS
+
+  Created by Диана Смахтина on 12.07.2022.
+  
+*/
+
+"welcome_screen_login_button_title" = "Sign in";
+"welcome_screen_registration_button_title" = "Register";
+"onboarding_welcome_screen_continue_button_state_one" = "Continue";
+"onboarding_welcome_screen_continue_button_state_two" = "Start register";
+"onboarding_welcome_screen_skip_title" = "Skip";
+
+"burger_menu_ATMs" = "ATMs and branches nearby";
+"burger_menu_exchange_rates" = "Exchange rates";
+
+"burger_menu_number_information" = "Free calls within Poland";
+"burger_menu_international_number_information" = "Phone for international calls";
+"burger_menu_submit_bug_report" = "Submit bug report";
+
+"burger_menu_language" = "Language";
+"burger_menu_indicator_language" = "English";
+"burger_menu_title_menu" = "Menu";
+
+"burger_menu_mode" = "Dark mode";
+
+"explanation_allow_access_to_your_location" = "Allow access to your location";
+"explanation_access_to_your_location" = "Access to your location will allow the Andersen-Bank app to find branches, ATMs and terminals near you.";
+
+"currency_name" = "Currency";
+"currency_exchange_sell" = "Sell";
+"currency_exchange_buy" = "Buy";
+"currency_exchange_dollar_full" = "American dollar";
+"currency_exchange_exchange_rates" = "Exchange rates";
+"currency_exchange_euro_full" = "Euro";
+"currency_exchange_euro/dollar" = "Euro/USD";
+"currency_exchange_eur/usd" = "EUR/USD";
+"currency_exchange_loading_error" = "Loading error";
+"change_language_ru" = "Russian";
+"change_language_eng" = "English";
+
+"ATMs_title_menu" = "ATMs and departments";
+
+"ATMs_collection_header_requests" = "Popular requests";
+"ATMs_collection_header_schedule" = "Work schedule";
+"ATMs_collection_header_additionaly" = "Additionaly";
+
+"ATMs_collection_requests_transfer" = "Transfer";
+"ATMs_collection_requests_pay" = "Pay";
+"ATMs_collection_requests_withdraw" = "Withdraw";
+"ATMs_collection_requests_replenish" = "Replenish";
+"ATMs_collection_requests_exchange" = "Currency exchange";
+"ATMs_collection_requests_without_card" = "Replenish without a card";
+
+"ATMs_collection_schedule_weekend" = "Weekend";
+"ATMs_collection_schedule_open" = "Open now";
+"ATMs_collection_schedule_24" = "Around the clock";
+
+"ATMs_collection_additionaly_ramp" = "Ramp";
+"ATMs_collection_additionaly_exotic" = "Exotic currency exchange";
+"ATMs_collection_additionaly_consult" = "Consultation";
+"ATMs_collection_additionaly_insurance" = "Insurance";
+
+"ATMs_segmented_controller_map" = "Map";
+"ATMs_segmented_controller_list" = "List";
+
+"ATMs_name_department" = "Department";
+"ATMs_name_atm" = "ATM";
+"ATMs_name_terminal" = "Terminal";
+
+"monday_short" = "Mo";
+"tuesday_short" = "Tu";
+"wednesday_short" = "We";
+"thursday_short" = "Th";
+"friday_short" = "Fr";
+"saturday_short" = "Sa";
+"sunday_short" = "Su";
+
+"atm_status_open" = "Open now";
+"atm_status_closed" = "Closed now";
+
+"ATMs_not_found" = "No results found";
+
+"error_report_error_report" = "Error report";
+"error_report_describe_the_problem" = "Describe the problem";
+"error_report_send_button" = "Send";
+"error_report_enter_your_email" = "Enter your e-mail";
+"error_report_my_contact_email" = "\n My contact e-mail: ";
+"error_report_email" = "E-mail";
+
+"kilometers_short" = "km";
+"meters_short" = "m";
+
+"ATMs_services_transfer" = "Transfer";
+"ATMs_services_pay" = "Pay";
+"ATMs_services_withdraw" = "Withdraw";
+"ATMs_services_deposit" = "Deposit";
+"ATMs_services_currency_exchange" = "Currency exchange";
+"ATMs_services_deposit_without_card" = "Deposit without a card";
+"ATMs_services_ramp" = "Ramp";
+"ATMs_services_exotic_currency_exchange" = "Exotic currency exchange";
+"ATMs_services_consultation" = "Consultation";
+"ATMs_services_insurance" = "Insurance";
+"atm_pull_up_more_filters" = "More filters";
+"atm_popup_details" = "Details";
+
+"popular_services" = "Popular services";
+"additional_services" = "Additional services";
+"department_work_schedule" = "Work schedule";
+
+"placeholder_for_searchbar" = "Start typing the street name";
+
+"alert_action_back" = "Back";

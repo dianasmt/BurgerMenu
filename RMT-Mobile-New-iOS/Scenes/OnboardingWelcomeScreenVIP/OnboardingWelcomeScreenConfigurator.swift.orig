@@ -1,0 +1,45 @@
+//
+//  OnboardingWelcomeScreenConfigurator.swift
+//  RMT-Mobile-New-iOS
+//
+//  Created by Aibek on 02.08.2022.
+//
+
+import Foundation
+
+<<<<<<< HEAD
+final class OnboardingWelcomeConfigurator: BaseDelegateConfigurator {
+    static func build(with viewController: OnboardingWelcomeViewController, delegate:
+    WelcomeScreenDelegate?) -> OnboardingWelcomeViewController {
+        let interactor = OnboardingWelcomeInteractor()
+        let presenter = OnboardingWelcomePresenter(viewController: viewController)
+        let router = OnboardingWelcomeRouter()
+        
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        viewController.router = router
+        
+        router.viewController = viewController
+        router.delegate = delegate
+        
+        return viewController
+    }
+=======
+final class OnboardingWelcomeConfigurator: BaseDelegateConfigurator {    
+        @discardableResult
+        static func build(with viewController: OnboardingWelcomeViewController, delegate: WelcomeScreenDelegate?) -> OnboardingWelcomeViewController {
+            let viewController = OnboardingWelcomeViewController()
+            let interactor = OnboardingWelcomeInteractor()
+            let presenter = OnboardingWelcomePresenter(viewController: viewController)
+            let router = OnboardingWelcomeRouter()
+            
+            viewController.interactor = interactor
+            interactor.presenter = presenter
+            viewController.router = router
+            router.viewController = viewController
+            router.delegate = delegate
+            
+            return viewController
+        }
+>>>>>>> develop
+}
