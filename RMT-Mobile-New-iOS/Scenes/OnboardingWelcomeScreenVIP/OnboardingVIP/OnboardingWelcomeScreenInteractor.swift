@@ -25,7 +25,7 @@ final class OnboardingWelcomeInteractor {
         static let labelText = "Lorem ipsum dolor sit amet"
         static let extraLabelText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
     }
-    var presenter: OnboardingWelcomeInteractorOutput!
+    var presenter: OnboardingWelcomeInteractorOutput?
 }
 
 extension OnboardingWelcomeInteractor: OnboardingWelcomeInteractorInput {
@@ -50,6 +50,6 @@ extension OnboardingWelcomeInteractor: OnboardingWelcomeInteractorInput {
                           extralabel: Const.extraLabelText)
             ])
         ]
-        self.presenter.displayData(pages: pages)
+        self.presenter?.displayData(pages: pages)
     }
 }

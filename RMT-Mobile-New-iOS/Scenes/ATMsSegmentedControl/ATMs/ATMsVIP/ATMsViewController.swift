@@ -20,15 +20,6 @@ protocol PullUpATMsServiceDelegate {
 
 class ATMsViewController: BaseViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
-    // MARK: - Properties
-    private let disposeBag = DisposeBag()
-    private lazy var locationService = LocationService(viewController: self)
-    
-    var interactor: ATMsInteractorInput!
-    var router: ATMsViewRoutingLogic!
-    private var mapView: GMSMapView!
-    private lazy var popUp = ATMDetailsPopUpView()
-    private var markers = [GMSMarker]()
     // MARK: - Consts
     enum Const {
         static let titleLabelName = "ATMs_title_menu"
@@ -42,6 +33,15 @@ class ATMsViewController: BaseViewController, CLLocationManagerDelegate, GMSMapV
         static let offLocationImagename = "ATMs_my_location_off"
     }
     
+    // MARK: - Properties
+    private let disposeBag = DisposeBag()
+    private lazy var locationService = LocationService(viewController: self)
+    var interactor: ATMsInteractorInput?
+    var router: ATMsViewRoutingLogic?
+    private var mapView: GMSMapView!
+    private lazy var popUp = ATMDetailsPopUpView()
+    private var markers = [GMSMarker]()
+
     // MARK: - Outlets
     private lazy var pullUpContainer: PullUpContainerATMs = {
         let pullUpController = PullUpContainerATMs.make()
@@ -132,7 +132,7 @@ class ATMsViewController: BaseViewController, CLLocationManagerDelegate, GMSMapV
     // MARK: - Override properties
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.interactor.presentInitialData()
+        self.interactor?.presentInitialData()
         self.setUpViews()
         self.checkStatusGivenVersion()
         self.setupBindings()
@@ -299,7 +299,7 @@ class ATMsViewController: BaseViewController, CLLocationManagerDelegate, GMSMapV
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        interactor.handlePinTap(pin: marker)
+        interactor?.handlePinTap(pin: marker)
         mapView.selectedMarker = marker
         return true
     }
@@ -347,7 +347,7 @@ class ATMsViewController: BaseViewController, CLLocationManagerDelegate, GMSMapV
 
 extension ATMsViewController: PullUpATMsServiceDelegate {
     func didSelectService(service: NameService) {
-        self.interactor.didSelectService(service: service)
+        self.interactor?.didSelectService(service: service)
     }
 }
 
@@ -424,18 +424,18 @@ extension ATMsViewController: ATMDetailsPopUpViewDelegate {
     }
     
     func handleSeeDetailsButton(department: DepartmentsResponse) {
-        router.navigateToDepartment(department: department)
+        router?.navigateToDepartment(department: department)
     }
 }
 
 extension ATMsViewController: ATMsSegmentedPresentorOutput {
     func displayDepartments(departments: [DepartmentsResponse]) {
-        interactor.setDepartments(departments: departments)
+        interactor?.setDepartments(departments: departments)
     }
 }
 
 extension ATMsViewController: ATMsSegmentedControllerChildDelegate {
     func displayPopup(for department: DepartmentsResponse) {
-        interactor.displayPopup(for: department)
+        interactor?.displayPopup(for: department)
     }
 }

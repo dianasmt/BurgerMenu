@@ -33,13 +33,12 @@ final class CurrencyExchangeInteractor {
         static let flagUSImageName = "currency_exchange_us_flag"
         static let flagEUImageName = "currency_exchange_eu_flag"
         static let flagUSEUImageName = "currency_exchange_us_and_eu_flag"
-        
     }
     enum Currency: String {
         case USD
         case EUR
     }
-    var presenter: CurrencyExchangeInteractorOutput!
+    var presenter: CurrencyExchangeInteractorOutput?
     private let worker: CurrencyExchangeWorkerLogic
     private let bag = DisposeBag()
     
@@ -53,22 +52,21 @@ extension CurrencyExchangeInteractor: CurrencyExchangeInteractorInput {
         worker.getCurrencyExchangeData()
             .withUnretained(self)
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {
-                weakSelf, rates in
+            .subscribe(onNext: { weakSelf, rates in
                 let necessaryRates = rates.filter {
                     $0.charCode == Currency.USD.rawValue || $0.charCode == Currency.EUR.rawValue
                 }
-                let cells = weakSelf.configureCells(with: necessaryRates);
-                weakSelf.presenter.displayCells(cells: cells)
+                let cells = weakSelf.configureCells(with: necessaryRates)
+                weakSelf.presenter?.displayCells(cells: cells)
             })
             .disposed(by: bag)
     }
     
     private func configureCells(with ratesList: [CurrencyRateModel]) -> [CurrencyDataSource] {
         guard let usdCurrencyRate = ratesList
-                .first(where: {$0.charCode == Currency.USD.rawValue}),
+                .first(where: { $0.charCode == Currency.USD.rawValue }),
               let eurCurrencyRate = ratesList
-                .first(where: {$0.charCode == Currency.EUR.rawValue}) else {
+                .first(where: { $0.charCode == Currency.EUR.rawValue }) else {
                     return []
                 }
         
@@ -93,7 +91,6 @@ extension CurrencyExchangeInteractor: CurrencyExchangeInteractorInput {
                                 .rounded(to: 2))
             ])
         ]
-        
         return cells
     }
 }

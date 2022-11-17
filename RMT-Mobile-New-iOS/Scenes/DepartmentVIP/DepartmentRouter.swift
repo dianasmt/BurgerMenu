@@ -23,6 +23,6 @@ extension DepartmentRouter: DepartmentRoutingLogic {
     }
     
     func passData(department: DepartmentsResponse) {
-        self.viewController?.interactor.passData(department: department)
+        self.viewController?.interactor?.passData(department: department)
     }
 }

@@ -39,6 +39,7 @@ class LanguageTableViewCell: UITableViewCell {
             maker.centerY.equalTo(contentView)
             maker.leftMargin.equalTo(contentView).offset(25)
         }
+        
         iconImageView.snp.makeConstraints { maker in
             maker.height.width.equalTo(25)
             maker.trailing.equalToSuperview().offset(-15)

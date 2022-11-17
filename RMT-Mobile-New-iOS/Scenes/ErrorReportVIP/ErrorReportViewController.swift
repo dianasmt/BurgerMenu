@@ -31,7 +31,7 @@ final class ErrorReportViewController: BaseViewController, UITextViewDelegate, M
     
     // MARK: - Properties
     var router: ErrorReportRoutingLogic?
-    var interactor: ErrorReportInteractorInput!
+    var interactor: ErrorReportInteractorInput?
     private let disposeBag = DisposeBag()
     
     // MARK: - Override properties
@@ -168,7 +168,7 @@ final class ErrorReportViewController: BaseViewController, UITextViewDelegate, M
     private func setupBindings() {
         self.sendButton.rx.tap
             .withUnretained(self)
-            .subscribe(onNext: { weakSelf, value in
+            .subscribe(onNext: { weakSelf, _ in
                 let message = weakSelf.describeYourProblemTextView.text + .localString(stringKey: Const.myContactEmail) + (weakSelf.emailTextField.text ?? .empty)
                 weakSelf.router?.navigateToMailComposerViewController(recepients: Const.emailRecepient,
                                                                       subject: .localString(stringKey: Const.titleLabelName),
@@ -268,7 +268,7 @@ final class ErrorReportViewController: BaseViewController, UITextViewDelegate, M
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if (textView == describeYourProblemTextView) {
+        if textView == describeYourProblemTextView {
             return textView.text.count + (text.count - range.length) <= 999
         }
         return false

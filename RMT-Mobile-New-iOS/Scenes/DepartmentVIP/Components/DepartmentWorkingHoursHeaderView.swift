@@ -17,15 +17,18 @@ protocol WorkingHoursHeaderViewDelegate: AnyObject {
 }
 
 final class DepartmentWorkingHoursHeaderView: UITableViewHeaderFooterView, Themeable {
-    private let bag = DisposeBag()
-    weak var delegate: WorkingHoursHeaderViewDelegate?
-    private var weekdaysDataSource = BehaviorRelay<[WeekdaysSectionDataSource]>(value: [])
-    
+  
     private enum Const {
            static let workSchedule = "department_work_schedule"
            static let iconImageName = "ATMs_open"
        }
-       
+    
+    // MARK: - Properties
+    private let bag = DisposeBag()
+    weak var delegate: WorkingHoursHeaderViewDelegate?
+    private var weekdaysDataSource = BehaviorRelay<[WeekdaysSectionDataSource]>(value: [])
+    
+    // MARK: - Outlets
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .fontSFProText(type: .semibold, size: 14)

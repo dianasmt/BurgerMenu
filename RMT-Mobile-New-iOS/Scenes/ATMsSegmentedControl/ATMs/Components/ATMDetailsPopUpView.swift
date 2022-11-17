@@ -18,9 +18,6 @@ protocol ATMDetailsPopUpViewDelegate: AnyObject {
 }
 
 class ATMDetailsPopUpView: UIView, Themeable {
-    private let bag = DisposeBag()
-    weak var delegate: ATMDetailsPopUpViewDelegate?
-    
     private enum Consts {
         static let details = "atm_popup_details"
         static let personImage = "ATMS_walking_person"
@@ -28,6 +25,10 @@ class ATMDetailsPopUpView: UIView, Themeable {
         static let open = "atm_status_open"
         static let closed = "atm_status_closed"
     }
+    
+    private let bag = DisposeBag()
+    weak var delegate: ATMDetailsPopUpViewDelegate?
+    
     
     private lazy var atmNameLabel: UILabel = {
         let label = UILabel()
@@ -225,7 +226,7 @@ class ATMDetailsPopUpView: UIView, Themeable {
     
     func fill(with model: ATMDetailsPopUpViewModel, data: DepartmentsResponse) {
         let dataSource = RxCollectionViewSectionedReloadDataSource<ATMServicesSectionDataSource>(
-            configureCell: { datasource, tableView, indexPath, item in
+            configureCell: { _, _, indexPath, item in
                 let cell = self.servicesCollectionView.dequeueReusableCell(withReuseIdentifier: ATMServicesCollectionViewCell.className, for: indexPath)
                 cell.fill(with: item)
                 cell.backgroundColor = self.themeProvider.theme == .dark ? .customLighterGray : .lightGreyColor
@@ -239,7 +240,7 @@ class ATMDetailsPopUpView: UIView, Themeable {
         servicesCollectionView
             .rx
             .itemSelected
-            .subscribe(onNext:{ indexPath in
+            .subscribe(onNext: { indexPath in
                 self.servicesCollectionView.isUserInteractionEnabled = false
                 let tooltip = ATMServiceTooltip()
                 tooltip.fill(title: model.services[indexPath.row])
@@ -262,7 +263,6 @@ class ATMDetailsPopUpView: UIView, Themeable {
                     self.servicesCollectionView.isUserInteractionEnabled = true
                     tooltip.removeFromSuperview()
                 }
-                
             }).disposed(by: bag)
         
         atmNameLabel.text = model.name

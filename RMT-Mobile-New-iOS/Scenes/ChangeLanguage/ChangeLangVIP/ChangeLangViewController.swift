@@ -18,7 +18,7 @@ final class ChangeLangViewController: BaseViewController {
     }
 
     // MARK: - Properties
-    var interactor: ChangeLangInteractorInput!
+    var interactor: ChangeLangInteractorInput?
     private let disposeBag = DisposeBag()
     
     // MARK: - Override properties
@@ -37,7 +37,7 @@ final class ChangeLangViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        interactor.presentInitialData()
+        interactor?.presentInitialData()
         handleClicking()
     }
     
@@ -52,8 +52,8 @@ final class ChangeLangViewController: BaseViewController {
         changeLangTableView.rx
             .modelSelected(LanguageModel.self)
             .withUnretained(self)
-            .subscribe(onNext:  { weakSelf, value in
-                weakSelf.interactor.changeLanguage(language: value.language)
+            .subscribe(onNext: { weakSelf, value in
+                weakSelf.interactor?.changeLanguage(language: value.language)
                 weakSelf.changeLangTableView.reloadData()
                 weakSelf.delegate?.updateUI(controller: weakSelf)
             })
@@ -64,7 +64,7 @@ final class ChangeLangViewController: BaseViewController {
 extension ChangeLangViewController: ChangeLangPresentorOutput {
     func displayData(languages: [LanguageDataSource]) {
         let dataSource = RxTableViewSectionedReloadDataSource<LanguageDataSource>(
-            configureCell: { datasource, tableView, indexPath, item in
+            configureCell: { _, tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: LanguageTableViewCell.className, for: indexPath)
                 cell.fill(with: item)
                 return cell

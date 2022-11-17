@@ -19,7 +19,7 @@ final class CurrencyExchangeViewController: BaseViewController {
     }
     
     // MARK: - Properties
-    var interactor: CurrencyExchangeInteractor!
+    var interactor: CurrencyExchangeInteractor?
     private let disposeBag = DisposeBag()
     
     // MARK: - Override properties
@@ -52,7 +52,7 @@ final class CurrencyExchangeViewController: BaseViewController {
         super.viewDidLoad()
         addSubviews()
         setupLayouts()
-        interactor.loadExchangeRates()
+        interactor?.loadExchangeRates()
     }
     
     // MARK: - Methods
@@ -60,7 +60,7 @@ final class CurrencyExchangeViewController: BaseViewController {
         [currencyHeaderView, currencyTableView].forEach { view.addSubview($0) }
     }
     
-    private func setupLayouts(){
+    private func setupLayouts() {
         currencyHeaderView.snp.makeConstraints { maker in
             maker.top.left.right.equalToSuperview()
             maker.height.equalTo(60)
@@ -76,7 +76,7 @@ final class CurrencyExchangeViewController: BaseViewController {
 extension CurrencyExchangeViewController: CurrencyExchangePresentorOutput {
     func displayData(cells: [CurrencyDataSource]) {
         let dataSource = RxTableViewSectionedReloadDataSource<CurrencyDataSource>(
-            configureCell: { datasource, tableView, indexPath, item in
+            configureCell: { _, tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.className, for: indexPath)
                 cell.fill(with: item)
                 return cell

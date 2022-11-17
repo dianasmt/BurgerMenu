@@ -8,8 +8,7 @@
 import Foundation
 
 final class CurrencyExchangeConfigurator: BaseConfigurator {
-    @discardableResult
-    static func build(with viewController: CurrencyExchangeViewController) -> CurrencyExchangeViewController {
+    @discardableResult static func build(with viewController: CurrencyExchangeViewController) -> CurrencyExchangeViewController {
         let viewController = CurrencyExchangeViewController()
         let worker = CurrencyExchangeWorker(manager: CurrencyExchangeNetworkManager())
         let interactor = CurrencyExchangeInteractor(worker: worker)

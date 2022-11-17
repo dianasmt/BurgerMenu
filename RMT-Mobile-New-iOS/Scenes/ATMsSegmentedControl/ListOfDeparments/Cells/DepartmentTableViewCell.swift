@@ -145,8 +145,8 @@ class DepartmentTableViewCell: UITableViewCell, Themeable {
         getDistance(departmentCoordinates: item.coordinates)
     }
     
-    private func checkType(department: DepartmentsResponse){
-        switch department.type{
+    private func checkType(department: DepartmentsResponse) {
+        switch department.type {
         case .atm:
             titleLabel.text = "\(String.localString(stringKey: Const.atmName)) №\(department.name)"
             iconImageView.image = UIImage(named: Const.atmImageName)
@@ -183,7 +183,7 @@ class DepartmentTableViewCell: UITableViewCell, Themeable {
         guard let latitude = stringCoordintes.first, let longitude = stringCoordintes.last else { return }
             if let distance = LocationService(viewController: ATMsViewController()).getDistance(to: (latitude, longitude)) {
                 if distance > 1000 {
-                    distanceText = "\(distance/1000) " + String.localString(stringKey: Const.kilometr)
+                    distanceText = "\(distance / 1000) " + String.localString(stringKey: Const.kilometr)
                 } else {
                     distanceText = "\(distance) " + String.localString(stringKey: Const.metr)
                 }

@@ -19,28 +19,28 @@ protocol ListInteractorOutput {
 }
 
 final class ListInteractor {
-    var presenter: ListInteractorOutput!
+    var presenter: ListInteractorOutput?
     private var arrayOfDepartments: [DepartmentsResponse] = []
 }
 
 extension ListInteractor: ListInteractorInput {
     func setUpTableView() {
-        presenter.setUpTableView()
+        presenter?.setUpTableView()
     }
     
     func setDepartments(departments: [DepartmentsResponse]) {
         self.arrayOfDepartments = departments
-        self.presenter.displayDepartments(departments: departments)
+        self.presenter?.displayDepartments(departments: departments)
     }
     
     func filterDepartments(searchText: String) {
         if searchText.isEmpty {
-            self.presenter.displayDepartments(departments: arrayOfDepartments)
+            self.presenter?.displayDepartments(departments: arrayOfDepartments)
         } else {
             let filteredarrayOfDepartments = arrayOfDepartments.filter {
                 $0.address.lowercased().starts(with: searchText.lowercased())
             }
-            self.presenter.displayDepartments(departments: filteredarrayOfDepartments)
+            self.presenter?.displayDepartments(departments: filteredarrayOfDepartments)
         }
     }
 }

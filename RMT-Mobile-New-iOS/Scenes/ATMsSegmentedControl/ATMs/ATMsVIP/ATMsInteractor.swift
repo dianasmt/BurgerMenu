@@ -28,7 +28,6 @@ final class ATMsInteractor {
         static let popularRequest = "ATMs_collection_header_requests"
         static let workSchedule =  "ATMs_collection_header_schedule"
         static let additionaly = "ATMs_collection_header_additionaly"
-        
         static let imageNameTransfer = "ATMs_transfer"
         static let imageNamePay = "ATMs_pay"
         static let imageNameWithdraw = "ATMs_withdraw"
@@ -77,7 +76,7 @@ final class ATMsInteractor {
     }
     
     let disposeBag = DisposeBag()
-    var presenter: ATMsInteractorOutput!
+    var presenter: ATMsInteractorOutput?
     private var selectedServices = Set<NameService>()
     private var arrayOfDepartments: [DepartmentsResponse] = []
 }
@@ -86,7 +85,7 @@ extension ATMsInteractor: ATMsInteractorInput {
     
     func setDepartments(departments: [DepartmentsResponse]) {
         self.arrayOfDepartments = departments
-        self.presenter.displayDepartments(departments: departments)
+        self.presenter?.displayDepartments(departments: departments)
     }
     
     func presentInitialData() {
@@ -108,7 +107,7 @@ extension ATMsInteractor: ATMsInteractorInput {
                                           ATMsCollectionModel(title: Const.consultation, image: Const.imageNameConsult, nameService: .consultation),
                                           ATMsCollectionModel(title: Const.insurance, image: Const.imageNameInsurance, nameService: .insurance)])
         ]
-        self.presenter.displaySections(sections: ATMsSections)
+        self.presenter?.displaySections(sections: ATMsSections)
     }
     
     func handlePinTap(pin: GMSMarker) {
@@ -116,13 +115,12 @@ extension ATMsInteractor: ATMsInteractorInput {
         netwotkService.getDepartments()
             .withUnretained(self)
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {
-                weakSelf, departments in
+            .subscribe(onNext: { weakSelf, departments in
                 if let department = departments.first(where: {
                     $0.coordinates == "\(pin.position.latitude), \(pin.position.longitude)"
                 }) {
                     let model = weakSelf.getPopUpViewModel(for: department, at: pin.position)
-                    weakSelf.presenter.displayPopUp(with: model, data: department)
+                    weakSelf.presenter?.displayPopUp(with: model, data: department)
                 }
             })
             .disposed(by: disposeBag)
@@ -135,7 +133,7 @@ extension ATMsInteractor: ATMsInteractorInput {
               }
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let model = getPopUpViewModel(for: department, at: location)
-        presenter.displayPopUp(with: model, data: department)
+        presenter?.displayPopUp(with: model, data: department)
     }
     
     private func getPopUpViewModel(for department: DepartmentsResponse, at coordinates: CLLocationCoordinate2D) -> ATMDetailsPopUpViewModel {
@@ -195,6 +193,6 @@ extension ATMsInteractor: PullUpATMsServiceDelegate {
         } else {
             selectedServices.insert(service)
         }
-        self.presenter.displayDepartments(departments: self.filter())
+        self.presenter?.displayDepartments(departments: self.filter())
     }
 }

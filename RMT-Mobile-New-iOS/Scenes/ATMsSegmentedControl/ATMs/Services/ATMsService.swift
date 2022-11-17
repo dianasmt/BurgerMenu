@@ -43,11 +43,11 @@ extension ATMsService: TargetType {
         case .getDepartmants:
             return .requestPlain
         case .getOneDepartment(let id):
-            return .requestParameters(parameters: [ParserKeys.departmentParameter : id], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: [ParserKeys.departmentParameter: id], encoding: JSONEncoding.default)
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return ["content-type": "application/json"]
     }
     

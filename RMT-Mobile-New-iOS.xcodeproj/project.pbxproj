@@ -828,6 +828,29 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		6085611A292693090065AC8A /* OnboardingVIP */ = {
+			isa = PBXGroup;
+			children = (
+				A7743CAE2890608D0055D1CD /* OnboardingWelcomeScreenViewControlller.swift */,
+				A789C56128992B0100F89D79 /* OnboardingWelcomeScreenConfigurator.swift */,
+				A7743CA9288D8D5D0055D1CD /* OnboardingWelcomeScreenPresenter.swift */,
+				A7743CAC289019760055D1CD /* OnboardingWelcomeScreenInteractor.swift */,
+			);
+			path = OnboardingVIP;
+			sourceTree = "<group>";
+		};
+		6085611B292693220065AC8A /* WelcomeScreenVIP */ = {
+			isa = PBXGroup;
+			children = (
+				608D2B86287F07B7003C1047 /* WelcomeScreenViewController.swift */,
+				608D2B88287F07ED003C1047 /* WelcomeScreenInteractor.swift */,
+				608D2B8A287F082B003C1047 /* WelcomeScreenPresenter.swift */,
+				608D2B8C287F091F003C1047 /* WelcomeScreenRouter.swift */,
+				608D2B8E287F0949003C1047 /* WelcomeScreenConfigurator.swift */,
+			);
+			path = WelcomeScreenVIP;
+			sourceTree = "<group>";
+		};
 		6088B40C288E8A5400D2985E /* BurgerMenuVIP */ = {
 			isa = PBXGroup;
 			children = (
@@ -890,17 +913,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		608D2B85287F0768003C1047 /* WelcomeScreenVIP */ = {
+		608D2B85287F0768003C1047 /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				6085611B292693220065AC8A /* WelcomeScreenVIP */,
 				CA1DB39428A4157F00AF324A /* Components */,
-				608D2B86287F07B7003C1047 /* WelcomeScreenViewController.swift */,
-				608D2B88287F07ED003C1047 /* WelcomeScreenInteractor.swift */,
-				608D2B8A287F082B003C1047 /* WelcomeScreenPresenter.swift */,
-				608D2B8C287F091F003C1047 /* WelcomeScreenRouter.swift */,
-				608D2B8E287F0949003C1047 /* WelcomeScreenConfigurator.swift */,
 			);
-			path = WelcomeScreenVIP;
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		609B65F528CBC193002B027F /* ComponentsOfCollectionView */ = {
@@ -1014,12 +1033,9 @@
 		A7743CAB289011C30055D1CD /* OnboardingWelcomeScreenVIP */ = {
 			isa = PBXGroup;
 			children = (
+				6085611A292693090065AC8A /* OnboardingVIP */,
 				CA1DB38E28A403E100AF324A /* Model */,
 				CA1DB38D28A403D800AF324A /* Reusable components */,
-				A7743CAE2890608D0055D1CD /* OnboardingWelcomeScreenViewControlller.swift */,
-				A789C56128992B0100F89D79 /* OnboardingWelcomeScreenConfigurator.swift */,
-				A7743CA9288D8D5D0055D1CD /* OnboardingWelcomeScreenPresenter.swift */,
-				A7743CAC289019760055D1CD /* OnboardingWelcomeScreenInteractor.swift */,
 			);
 			path = OnboardingWelcomeScreenVIP;
 			sourceTree = "<group>";
@@ -1076,7 +1092,7 @@
 				A73E7DE028A0FF6600874A2C /* UserRequestVIP */,
 				A73E7DFE28A5163A00874A2C /* CurrencyExchangeVIP */,
 				6042AD7428A4F5D0008ED9C0 /* ChangeLanguage */,
-				608D2B85287F0768003C1047 /* WelcomeScreenVIP */,
+				608D2B85287F0768003C1047 /* WelcomeScreen */,
 				6088B40C288E8A5400D2985E /* BurgerMenuVIP */,
 				A7743CAB289011C30055D1CD /* OnboardingWelcomeScreenVIP */,
 			);

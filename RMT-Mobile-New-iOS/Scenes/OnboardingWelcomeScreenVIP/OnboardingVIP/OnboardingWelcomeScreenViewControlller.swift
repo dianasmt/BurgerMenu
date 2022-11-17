@@ -33,6 +33,7 @@ final class OnboardingWelcomeViewController: BaseViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: PageCell.className)
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -64,15 +65,13 @@ final class OnboardingWelcomeViewController: BaseViewController {
     
     // MARK: - Properties
     private let disposeBag = DisposeBag()
-    var interactor: OnboardingWelcomeInteractorInput!
+    var interactor: OnboardingWelcomeInteractorInput?
     
     // MARK: - Override
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        collectionView.delegate = self
-        self.interactor.presentInitialData()
-    
+        interactor?.presentInitialData()
         addSubviews()
         setupLayouts()
     }

@@ -32,7 +32,7 @@ class ATMServiceTooltip: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError()
+        fatalError("fatal")
     }
     
     private func setupConstraints() {
@@ -52,17 +52,17 @@ class ATMServiceTooltip: UIView {
         let width = (titleLabel.frame.width + 25)
         let height = (titleLabel.frame.height + 10)
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width, height: height), cornerRadius: 15)
-        path.move(to: CGPoint(x: width/2-5, y: height))
-        path.addLine(to: CGPoint(x: width/2+5, y: height))
-        path.addLine(to: CGPoint(x: width/2, y: height + 6))
-        path.addLine(to: CGPoint(x: width/2-5, y: height))
+        path.move(to: CGPoint(x: width / 2 - 5, y: height))
+        path.addLine(to: CGPoint(x: width / 2 + 5, y: height))
+        path.addLine(to: CGPoint(x: width / 2, y: height + 6))
+        path.addLine(to: CGPoint(x: width / 2 - 5, y: height))
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.fillColor = UIColor.customDarkGray.cgColor
         shapeLayer.path = path.cgPath
         
         let pathBounds = shapeLayer.path!.boundingBoxOfPath
-        let shapeFrame = CGRect(x: pathBounds.origin.x , y: pathBounds.origin.y, width:
+        let shapeFrame = CGRect(x: pathBounds.origin.x, y: pathBounds.origin.y, width:
         pathBounds.size.width, height: pathBounds.size.height)
         shapeLayer.bounds = shapeFrame
         shapeLayer.frame  = shapeLayer.bounds
@@ -80,4 +80,3 @@ class ATMServiceTooltip: UIView {
         drawShape()
     }
 }
-

@@ -10,10 +10,6 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-protocol DisplayLogic: AnyObject {
-    func displayData()
-}
-
 final class WelcomeScreenViewController: BaseViewController {
     
     // MARK: - Consts
@@ -29,7 +25,7 @@ final class WelcomeScreenViewController: BaseViewController {
     // MARK: - Outlets
     private lazy var logo = UIImageView()
     
-    private lazy var signInButton : UIButton = {
+    private lazy var signInButton: UIButton = {
         let signInButton = UIButton(type: .system)
         signInButton.clipsToBounds = true
         signInButton.backgroundColor = .customYellow
@@ -41,7 +37,7 @@ final class WelcomeScreenViewController: BaseViewController {
         return signInButton
     }()
     
-    private lazy var registerButton : UIButton = {
+    private lazy var registerButton: UIButton = {
         let registerButton = UIButton(type: .system)
         registerButton.clipsToBounds = true
         registerButton.contentMode = .scaleAspectFill
@@ -96,8 +92,6 @@ final class WelcomeScreenViewController: BaseViewController {
                 weakSelf.updateUI()
             })
             .disposed(by: self.disposeBag)
-
-        
     }
     @objc func changingLanguage() {
         self.updateUI()
@@ -184,10 +178,5 @@ final class WelcomeScreenViewController: BaseViewController {
         logo.image = theme.welcomePageLogo
         registerButton.setTitleColor(theme.colors.registerButtonTitleColor, for: .normal)
         registerButton.layer.borderColor = theme.colors.registerButtonBorderColor.cgColor
-    }
-}
-
-extension WelcomeScreenViewController: DisplayLogic {
-    func displayData() {
     }
 }

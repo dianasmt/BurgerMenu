@@ -19,9 +19,10 @@ final class MenuViewController: BaseViewController {
     
     // MARK: - Properties
     var router: MenuRoutingLogic?
-    var interactor: MenuInteractorInput!
+    var interactor: MenuInteractorInput?
     private let disposeBag = DisposeBag()
-    private let defaults = UserDefaults.standard    
+    private let defaults = UserDefaults.standard
+    
     // MARK: - Override properties
     override var isHeaderHidden: Bool { return false }
     override var titleLabel: String? { return .localString(stringKey: Const.titleLabelName) }
@@ -41,7 +42,7 @@ final class MenuViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        interactor.presentInitialData()
+        interactor?.presentInitialData()
         handleClicking()
         
         NotificationCenter.default.addObserver(self, selector: #selector(changingLanguage), name: .languageChanged, object: nil)
@@ -62,7 +63,7 @@ final class MenuViewController: BaseViewController {
         burgerMenuTableView.rx
             .modelSelected(BurgerMenuCellProtocol.self)
             .withUnretained(self)
-            .subscribe(onNext:  { weakSelf, value in
+            .subscribe(onNext: { weakSelf, value in
                 switch value.type {
                 case .ATMs:
                     if UserDefaults.isNotFirstTime {
@@ -73,15 +74,15 @@ final class MenuViewController: BaseViewController {
                 case .exchangeRates:
                     weakSelf.router?.navigateToCurrencyExchange()
                 case .polandNumber:
-                    weakSelf.interactor.clickOnNumber(number: value.title)
+                    weakSelf.interactor?.clickOnNumber(number: value.title)
                 case .number:
-                    weakSelf.interactor.clickOnNumber(number: value.title)
+                    weakSelf.interactor?.clickOnNumber(number: value.title)
                 case .errorReport:
                     weakSelf.router?.navigateToErrorReport()
                 case .language:
                     weakSelf.router?.navigateToChangeLang()
-                case .darkMode:
-                    print("Dark mode")
+                default:
+                    break
                 }
             })
             .disposed(by: disposeBag)
@@ -92,11 +93,11 @@ extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         switch section {
         case 1:
-            return BurgerFooterView.init(offset: .upper)
+            return BurgerFooterView(offset: .upper)
         case 2, 3:
-            return BurgerFooterView.init(offset: .none)
+            return BurgerFooterView(offset: .none)
         default:
-            return BurgerFooterView.init(offset: .both)
+            return BurgerFooterView(offset: .both)
         }
     }
     
@@ -116,7 +117,7 @@ extension MenuViewController: UITableViewDelegate {
 extension MenuViewController: MenuPresentorOutput {
     func displayData(sections: [SectionDataSource]) {
         let dataSource = RxTableViewSectionedReloadDataSource<SectionDataSource>(
-            configureCell: { datasource, tableView, indexPath, item in
+            configureCell: { _, tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: item.reuseIdentifier, for: indexPath)
                 cell.fill(with: item)
                 return cell

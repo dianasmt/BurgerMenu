@@ -12,7 +12,7 @@ import RxCocoa
 import RxDataSources
 
 final class DepartmentViewController: BaseViewController {
-    private var isWorkingHoursHeaderViewOpen = false
+    
     // MARK: - Consts
     private enum Const {
         static var titleLabelName = "ATMs_name_department"
@@ -22,10 +22,11 @@ final class DepartmentViewController: BaseViewController {
     
     // MARK: - Properties
     var router: DepartmentRoutingLogic?
-    var interactor: DepartmentInteractorInput!
-    
+    var interactor: DepartmentInteractorInput?
+    private var isWorkingHoursHeaderViewOpen = false
     private let disposeBag = DisposeBag()
     private let defaults = UserDefaults.standard
+    
     // MARK: - Override properties
     override var isHeaderHidden: Bool { return false }
     override var titleLabel: String? { return .localString(stringKey: Const.titleLabelName) }
@@ -61,7 +62,7 @@ final class DepartmentViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        interactor.presentInitialData()
+        interactor?.presentInitialData()
     }
     
     // MARK: - Methods
@@ -115,7 +116,7 @@ extension DepartmentViewController: UITableViewDelegate {
 extension DepartmentViewController: DepartmentPresentorOutput {
     func displayData(sections: [DepartmentSectionDataSource]) {
         let dataSource = RxTableViewSectionedReloadDataSource<DepartmentSectionDataSource>(
-            configureCell: { datasource, tableView, indexPath, item in
+            configureCell: { _, tableView, indexPath, item in
                 let cell = tableView.dequeueReusableCell(withIdentifier: item.reuseIdentifier, for: indexPath)
                 cell.fill(with: item)
                 return cell
@@ -145,20 +146,19 @@ extension DepartmentViewController: DepartmentPresentorOutput {
        }
     
     func passData(department: DepartmentsResponse) {
-        interactor.passData(department: department)
+        interactor?.passData(department: department)
     }
-
 }
 
 extension DepartmentViewController: DepartmentHeaderViewDelegate {
     func didTapShowWorkingScheduleButton() {
         isWorkingHoursHeaderViewOpen.toggle()
-        interactor.handleShowHideButton(shouldOpen: isWorkingHoursHeaderViewOpen)
+        interactor?.handleShowHideButton(shouldOpen: isWorkingHoursHeaderViewOpen)
     }
 }
 
 extension DepartmentViewController: WorkingHoursHeaderViewDelegate {
     func didChooseWeekday(day: Int) {
-        interactor.handleTapOnWeekday(day: day)
+        interactor?.handleTapOnWeekday(day: day)
     }
 }

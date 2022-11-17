@@ -23,7 +23,7 @@ final class ChangeLangInteractor {
         static let languageENG = "change_language_eng"
         static let selectedLangImageName = "change_lang_selected"
     }
-    var presenter: ChangeLangInteractorOutput!
+    var presenter: ChangeLangInteractorOutput?
 }
 
 extension ChangeLangInteractor: ChangeLangInteractorInput {
@@ -36,7 +36,7 @@ extension ChangeLangInteractor: ChangeLangInteractorInput {
             ])
         ]
 
-        self.presenter.displayLanguages(languages: languages)
+        self.presenter?.displayLanguages(languages: languages)
     }
     
     func changeLanguage(language: Languages) {

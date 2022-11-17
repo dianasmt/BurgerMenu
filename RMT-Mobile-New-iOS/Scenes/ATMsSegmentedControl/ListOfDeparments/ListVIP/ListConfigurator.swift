@@ -8,8 +8,7 @@
 import Foundation
 
 final class ListConfigurator: BaseConfigurator {
-    @discardableResult
-    static func build(with viewController: ListViewController) -> ListViewController {
+    @discardableResult static func build(with viewController: ListViewController) -> ListViewController {
         let viewController = ListViewController()
         let interactor = ListInteractor()
         let presenter = ListPresenter()

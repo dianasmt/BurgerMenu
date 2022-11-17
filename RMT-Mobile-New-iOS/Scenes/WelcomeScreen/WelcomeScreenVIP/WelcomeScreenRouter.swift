@@ -12,8 +12,7 @@ protocol RoutingLogic: AnyObject {
     func startRegistration()
 }
 
-final class WelcomeScreenRouter{
-    weak var viewController: DisplayLogic?
+final class WelcomeScreenRouter {
     weak var delegate: WelcomeScreenDelegate?
 }
 

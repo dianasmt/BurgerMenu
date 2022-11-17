@@ -75,14 +75,14 @@ final class UserRequestViewController: BaseViewController {
     
     private func setupLayouts() {
         
-        infoTitleLabel.snp.makeConstraints{maker in
+        infoTitleLabel.snp.makeConstraints { maker in
             maker.top.equalToSuperview().inset(35)
             maker.width.equalTo(344)
             maker.height.equalTo(72)
             maker.centerX.equalToSuperview()
         }
         
-        descriptionLabel.snp.makeConstraints{maker in
+        descriptionLabel.snp.makeConstraints { maker in
             maker.top.equalTo(infoTitleLabel.snp.bottom).inset(-25)
             maker.width.equalTo(343)
             maker.left.equalTo(16)

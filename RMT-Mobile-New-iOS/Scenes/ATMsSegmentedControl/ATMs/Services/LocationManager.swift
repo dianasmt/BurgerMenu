@@ -42,7 +42,7 @@ class LocationService: NSObject, CLLocationManagerDelegate, LoacationManagerProt
             return nil
         }
         let startLocation = CLLocation.init(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
-        let endLocation : CLLocation = CLLocation.init(latitude: coordinates.0, longitude: coordinates.1)
+        let endLocation: CLLocation = CLLocation.init(latitude: coordinates.0, longitude: coordinates.1)
         let distance = startLocation.distance(from: endLocation)
         return Int(distance)
     }

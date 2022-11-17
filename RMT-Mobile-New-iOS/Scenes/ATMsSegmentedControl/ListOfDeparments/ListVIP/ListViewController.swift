@@ -15,7 +15,6 @@ protocol ATMsListParentViewControllerDelegate: AnyObject {
 }
 
 class ListViewController: BaseViewController {
-    weak var parentDelegate: ATMsListParentViewControllerDelegate?
     
     // MARK: - Consts
     enum Const {
@@ -26,7 +25,8 @@ class ListViewController: BaseViewController {
     
     // MARK: - Properties
     private let disposeBag = DisposeBag()
-    var interactor: ListInteractorInput!
+    var interactor: ListInteractorInput?
+    weak var parentDelegate: ATMsListParentViewControllerDelegate?
     
     // MARK: - Outlets
     private lazy var listOfDepartmentsTableView: UITableView = {
@@ -86,7 +86,7 @@ class ListViewController: BaseViewController {
             make.top.equalTo(searchBar.snp.bottom)
         }
         listOfDepartmentsTableView.keyboardDismissMode = .onDrag
-        interactor.setUpTableView()
+        interactor?.setUpTableView()
     }
     
     private func setUpImage() {
@@ -122,7 +122,7 @@ class ListViewController: BaseViewController {
 
 extension ListViewController: ATMsSegmentedPresentorOutput {
     func displayDepartments(departments: [DepartmentsResponse]) {
-        interactor.setDepartments(departments: departments)
+        interactor?.setDepartments(departments: departments)
     }
 }
 
@@ -166,7 +166,7 @@ extension ListViewController: UITableViewDelegate {
 
 extension ListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.interactor.filterDepartments(searchText: searchText)
+        self.interactor?.filterDepartments(searchText: searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

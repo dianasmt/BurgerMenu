@@ -15,13 +15,17 @@ protocol DepartmentHeaderViewDelegate: AnyObject {
 }
 
 final class DepartmentTableHeaderView: UITableViewHeaderFooterView, Themeable {
-    weak var delegate: DepartmentHeaderViewDelegate?
-    private let bag = DisposeBag()
+
     private enum Consts {
         static let open = "atm_status_open"
         static let closed = "atm_status_closed"
     }
     
+    // MARK: - Properties
+    weak var delegate: DepartmentHeaderViewDelegate?
+    private let bag = DisposeBag()
+    
+    // MARK: - Outlets
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .center

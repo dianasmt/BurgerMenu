@@ -44,7 +44,7 @@ final class SwitchTableViewCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError()
+        fatalError("fatal")
     }
     
     private func setUpSubviews() {
@@ -62,7 +62,6 @@ final class SwitchTableViewCell: UITableViewCell {
         label.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.leftMargin.equalTo(iconImageView).offset(35)
-            
         }
         switcher.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
@@ -75,8 +74,7 @@ final class SwitchTableViewCell: UITableViewCell {
         switcher.addTarget(self, action: #selector(didTapSwitch), for: .touchUpInside)
     }
     
-    @objc
-    private func didTapSwitch() {
+    @objc private func didTapSwitch() {
         themeProvider.toggleTheme()
     }
     

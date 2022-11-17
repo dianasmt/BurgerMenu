@@ -28,7 +28,7 @@ final class CurrencyExchangeXMLParser: NSObject, XMLParserDelegate, CurrencyExch
     private var xmlCurrencyDataDictionary = [String: Any]()
     private var currentElement = String.empty
     
-    init(parser: XMLParser){
+    init(parser: XMLParser) {
         self.parser = parser
         super.init()
         parser.delegate = self
@@ -39,11 +39,7 @@ final class CurrencyExchangeXMLParser: NSObject, XMLParserDelegate, CurrencyExch
         return parsedModels.asObservable()
     }
     
-    func parser(_ parser: XMLParser,
-                         didStartElement elementName: String,
-                         namespaceURI: String?,
-                         qualifiedName qName: String?,
-                         attributes attributeDict: [String : String] = [:]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String] = [:]) {
         if elementName == ParserKeys.recordKey {
             xmlCurrencyDataDictionary = [:]
         } else {
@@ -59,16 +55,13 @@ final class CurrencyExchangeXMLParser: NSObject, XMLParserDelegate, CurrencyExch
         }
     }
     
-    func parser(_ parser: XMLParser,
-                         didEndElement elementName: String,
-                         namespaceURI: String?,
-                         qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == ParserKeys.recordKey {
             addParsedModel(from: xmlCurrencyDataDictionary)
         }
     }
     
-    private func addParsedModel(from valuesDict: [String : Any]) {
+    private func addParsedModel(from valuesDict: [String: Any]) {
         if let strNumCode = valuesDict[ParserKeys.numCode] as? String,
            let numCode = Int(strNumCode),
            let charCode = valuesDict[ParserKeys.charCode] as? String,
@@ -76,8 +69,7 @@ final class CurrencyExchangeXMLParser: NSObject, XMLParserDelegate, CurrencyExch
            let nominal = Int(strNominal),
            let name = valuesDict[ParserKeys.name] as? String,
            let strValue = valuesDict[ParserKeys.value] as? String,
-           let value = Double(strValue.replacingOccurrences(of: ",", with: "."))
-        {
+           let value = Double(strValue.replacingOccurrences(of: ",", with: ".")) {
             let model = CurrencyRateModel(numCode: numCode, charCode: charCode, nominal: nominal, name: name, value: value)
             parsedModels.accept(parsedModels.value + [model])
         }

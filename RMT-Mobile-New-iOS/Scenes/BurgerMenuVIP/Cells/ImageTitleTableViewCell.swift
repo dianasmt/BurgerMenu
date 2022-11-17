@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class ImageTitleTableViewCell: UITableViewCell {
-    
     private lazy var cellImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

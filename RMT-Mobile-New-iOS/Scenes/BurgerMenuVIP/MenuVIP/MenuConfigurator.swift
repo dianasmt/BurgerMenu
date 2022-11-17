@@ -8,8 +8,7 @@
 import Foundation
 
 final class MenuConfigurator: BaseDelegateConfigurator {
-    @discardableResult
-    static func build(with viewController: MenuViewController, delegate: WelcomeScreenDelegate?) -> MenuViewController {
+    @discardableResult static func build(with viewController: MenuViewController, delegate: WelcomeScreenDelegate?) -> MenuViewController {
         let viewController = MenuViewController()
         let interactor = MenuInteractor()
         let presenter = MenuPresenter(viewController: viewController)

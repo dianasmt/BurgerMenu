@@ -12,11 +12,9 @@ protocol PresentationLogic {
 }
 
 final class WelcomeScreenPresenter {
-    weak var viewController: DisplayLogic?
 }
 
 extension WelcomeScreenPresenter: PresentationLogic {
     func presentInitialData() {
-        self.viewController?.displayData()
     }
 }

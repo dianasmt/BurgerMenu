@@ -8,7 +8,6 @@
 import UIKit
 
 class ChangeLangTableViewCell: UITableViewCell {
-
     private lazy var cellImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

@@ -43,7 +43,7 @@ extension CurrencyService: TargetType {
     
     var task: Task {
         return .requestParameters(
-            parameters: [ParserKeys.currentRatesParameter : String.getCurrenDate()],
+            parameters: [ParserKeys.currentRatesParameter: String.getCurrenDate()],
             encoding: URLEncoding.default)
     }
     
